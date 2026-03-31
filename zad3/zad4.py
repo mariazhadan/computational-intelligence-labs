@@ -34,7 +34,9 @@ y = df['diagnosis']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
 models = {
+    "k-NN (k=3)": KNeighborsClassifier(n_neighbors=3),
     "k-NN (k=5)": KNeighborsClassifier(n_neighbors=5),
+    "k-NN (k=11)": KNeighborsClassifier(n_neighbors=11),
     "Drzewo Decyzyjne": DecisionTreeClassifier(),
     "Naive Bayes": GaussianNB()
 }
