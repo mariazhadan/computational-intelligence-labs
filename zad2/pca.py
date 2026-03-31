@@ -24,7 +24,7 @@ print("\nEtykiety klas:")
 print(y.head())
 
 # 4. Standaryzacja danych
-skaler = StandardScaler()
+skaler = StandardScaler() #srednia ~0 std ~1
 X_standaryzowane = skaler.fit_transform(X)
 
 # 5. PCA dla wszystkich składowych

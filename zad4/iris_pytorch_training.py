@@ -1,4 +1,3 @@
-import argparse
 from pathlib import Path
 
 import matplotlib.pyplot as plt
@@ -27,8 +26,8 @@ def load_data(csv_path: str, batch_size: int = 32, val_size: float = 0.2, random
 
     # Normalization fitted only on training data.
     scaler = StandardScaler()
-    X_train = scaler.fit_transform(X_train).astype(np.float32)
-    X_val = scaler.transform(X_val).astype(np.float32)
+    X_train = scaler.fit_transform(X_train)
+    X_val = scaler.transform(X_val)
 
     X_train_t = torch.tensor(X_train, dtype=torch.float32)
     y_train_t = torch.tensor(y_train, dtype=torch.long)
@@ -55,7 +54,7 @@ class IrisNet(nn.Module):
         super().__init__()
         self.net = nn.Sequential(
             nn.Linear(in_features, 16),
-            nn.ReLU(),
+            nn.ReLU(), #funkcja aktywacji
             nn.Linear(16, num_classes),
         )
 
@@ -99,15 +98,15 @@ def train(model, train_loader, val_loader, epochs, lr, device):
         for X, y in train_loader:
             X, y = X.to(device), y.to(device)
 
-            optimizer.zero_grad()
+            optimizer.zero_grad() #pythorcz prechowuje gradienty
             logits = model(X)
-            loss = criterion(logits, y)
-            loss.backward()
-            optimizer.step()
+            loss = criterion(logits, y) # otrzymujemy wejście i loss
+            loss.backward() #backpropagation
+            optimizer.step() #zmiana wag
 
             total_loss += loss.item() * X.size(0)
             correct += (logits.argmax(dim=1) == y).sum().item()
-            total += X.size(0)
+            total += X.size(0) # statystyki ile jest zgadano? 
 
         train_loss = total_loss / total
         train_acc = correct / total
