@@ -21,7 +21,6 @@ from torch.utils.data import DataLoader, TensorDataset
 # Topology:
 # input -> Linear(16 hidden units) -> ReLU -> Linear(output_classes)
 # ReLU adds non-linearity, the last layer returns logits.
-# CrossEntropyLoss applies the softmax logic internally, so we do not add softmax in the model.
 class Net(nn.Module):
     def __init__(self, in_features: int, num_classes: int):
         super().__init__()

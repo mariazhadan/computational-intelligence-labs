@@ -45,17 +45,16 @@ def load_data(csv_path: str, batch_size: int = 32, val_size: float = 0.2, random
 
 class IrisNet(nn.Module):
     """
-    Minimal MLP for Iris classification.
-    Topology: input -> Linear(16) -> ReLU -> Linear(num_classes).
+    Topology: input(4) -> Linear(16) -> ReLU -> Linear(num_classes 3).
     Hidden ReLU introduces non-linearity, final layer returns logits for CrossEntropyLoss.
     """
 
     def __init__(self, in_features: int, num_classes: int):
         super().__init__()
         self.net = nn.Sequential(
-            nn.Linear(in_features, 16),
+            nn.Linear(in_features, 12),
             nn.ReLU(), #funkcja aktywacji
-            nn.Linear(16, num_classes),
+            nn.Linear(12, num_classes),
         )
 
     def forward(self, x):
@@ -98,15 +97,15 @@ def train(model, train_loader, val_loader, epochs, lr, device):
         for X, y in train_loader:
             X, y = X.to(device), y.to(device)
 
-            optimizer.zero_grad() #pythorcz prechowuje gradienty
+            optimizer.zero_grad() #pythorcz usuwa gradienty
             logits = model(X)
-            loss = criterion(logits, y) # otrzymujemy wejście i loss
-            loss.backward() #backpropagation
+            loss = criterion(logits, y) # porownanie wynnikow z odpowiedziami
+            loss.backward() #backpropagation liczenie gradientow
             optimizer.step() #zmiana wag
 
             total_loss += loss.item() * X.size(0)
-            correct += (logits.argmax(dim=1) == y).sum().item()
-            total += X.size(0) # statystyki ile jest zgadano? 
+            correct += (logits.argmax(dim=1) == y).sum().item() # statystyki ile jest zgadano?
+            total += X.size(0)  
 
         train_loss = total_loss / total
         train_acc = correct / total

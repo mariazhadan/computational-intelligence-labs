@@ -121,15 +121,6 @@ def gradient_descent_step(params: NetworkParameters, grads: Dict[str, float], et
     )
 
 
-def train_one_example(x1: float, x2: float, y_true: float, eta: float = 0.1) -> Tuple[ForwardCache, float, Dict[str, float], NetworkParameters]:
-    params = NetworkParameters()
-    cache = forward_propagation(x1, x2, params)
-    loss = mean_squared_error(cache.y_hat, y_true)
-    grads = backpropagation(cache, y_true, params)
-    updated_params = gradient_descent_step(params, grads, eta=eta)
-    return cache, loss, grads, updated_params
-
-
 def print_report():
     x1, x2 = 0.6, 0.1
     y_true = 0.8
