@@ -11,7 +11,7 @@ video_path = "source/office_yolo.mp4"
 
 conf_levels = [0.1, 0.3, 0.5, 0.7]
 
-os.makedirs("results", exist_ok=True)
+os.makedirs("results_zad1", exist_ok=True)
 
 
 def run_image(conf):
@@ -118,3 +118,10 @@ def run_video(conf):
 for c in conf_levels:
     run_image(c)
     run_video(c)
+
+
+"""
+Model został wytrenowany na zbiorze COCO i wykrywa 80 klas obiektów(obiekty realne).
+W środku znajduje się CNN z około 2.4 miliona parametrów.
+
+"""

@@ -1,0 +1,1 @@
+https://studmsugedupl.sharepoint.com/:b:/r/sites/Int.Ob.-LAB-gr.2/Shared%20Documents/General/iolab04-neural-network-2026.pdf?csf=1&web=1&e=mK0SSQ

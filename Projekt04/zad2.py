@@ -45,7 +45,7 @@ def load_data(csv_path: str, batch_size: int = 32, val_size: float = 0.2, random
 
 class IrisNet(nn.Module):
     """
-    Topology: input(4) -> Linear(16) -> ReLU -> Linear(num_classes 3).
+    Topology: input(4) -> Linear(12) -> ReLU -> Linear(num_classes 3).
     Hidden ReLU introduces non-linearity, final layer returns logits for CrossEntropyLoss.
     """
 
