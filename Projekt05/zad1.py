@@ -34,9 +34,9 @@ def run_image(conf):
             })
 
         img = r.plot()
-        cv2.imwrite(f"results/image_conf_{conf}.jpg", img)
+        cv2.imwrite(f"results_zad1/image_conf_{conf}.jpg", img)
 
-    with open(f"results/image_conf_{conf}.json", "w") as f:
+    with open(f"results_zad1/image_conf_{conf}.json", "w") as f:
         json.dump({"image": image_path, "detections": detections}, f, indent=2)
 
 
@@ -45,9 +45,7 @@ def run_video(conf):
 
     frame_id = 0
     fps = cap.get(cv2.CAP_PROP_FPS)
-    if fps == 0:
-        fps = 25
-
+    
     data = {
         "video": video_path,
         "frames": []
@@ -58,7 +56,7 @@ def run_video(conf):
     height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 
     out = cv2.VideoWriter(
-        f"results/video_conf_{conf}.mp4",
+        f"results_zad1/video_conf_{conf}.mp4",
         fourcc,
         fps,
         (width, height)
