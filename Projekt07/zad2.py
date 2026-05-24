@@ -15,10 +15,10 @@ def fitness_func(ga_instance, solution, solution_idx):
 # Jeden chromosom ma 6 genow z przedzialu [0, 1).
 def create_ga(seed):
     return pygad.GA(
-        num_generations=70,
+        num_generations=80,
         num_parents_mating=30,
         fitness_func=fitness_func,
-        sol_per_pop=50,
+        sol_per_pop=40,
         num_genes=6,
         gene_space={"low": 0.0, "high": 1.0},
         parent_selection_type="rank",

@@ -55,8 +55,8 @@ def fitness_func(model, solution, solution_idx):
 
 def create_ga(seed=1):
     ga_instance = pygad.GA(
-        num_generations=300,
-        sol_per_pop=100,
+        num_generations=350,
+        sol_per_pop=90,
         num_parents_mating=30,
         num_genes=MAX_STEPS,
         gene_space=[0, 1, 2, 3],

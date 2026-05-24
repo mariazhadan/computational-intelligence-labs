@@ -41,7 +41,7 @@ def nowy_model():
         gene_type=int,
         num_genes=len(przedmioty),
         fitness_func=fitness_func,
-        sol_per_pop=50,
+        sol_per_pop=70,
         num_generations=150,
         num_parents_mating=30,
         parent_selection_type="rank",
